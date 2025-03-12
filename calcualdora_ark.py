@@ -25,7 +25,7 @@ def calculate_level(r, p):
 
 #Funcion para la conversion tek de los items de de la lista.
 def convertion_tek(quantity_tek):
-    print(f'\nEquivalencias para {quabtity_tek} Tek:\n')
+    print(f'\nEquivalencias para {quantity_tek} Tek:\n')
     for item, value in convertion.items():
         quantity_convertion = round((quantity_tek / 100) * value)
         print(f'- {item} = {quantity_convertion}')
