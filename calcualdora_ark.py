@@ -24,11 +24,11 @@ def calculate_level(r, p):
     return final_level
 
 #Funcion para la conversion tek de los items de de la lista.
-def convertion_tek(quality_tek):
-    print(f'\nEquivalencias para {quality_tek} Tek:\n')
+def convertion_tek(quantity_tek):
+    print(f'\nEquivalencias para {quabtity_tek} Tek:\n')
     for item, value in convertion.items():
-        quality_convertion = round((quality_tek / 100) * value)
-        print(f'- {item} = {quality_convertion}')
+        quantity_convertion = round((quantity_tek / 100) * value)
+        print(f'- {item} = {quantity_convertion}')
 
 while True:
     print('\nBienvenido a la calculadora de niveles de Reapers y Conversion Tek.')
@@ -56,13 +56,13 @@ while True:
     
     elif option == '2':
         try:
-            quality_tek = int(input('Ingrese la cantidad de Tek: '))
+            quantity_tek = int(input('Ingrese la cantidad de Tek: '))
 
-            if quality_tek < 0:
+            if quantity_tek < 0:
                 print('\nEl valor debe ser positivo. Inténtelo de nuevo.')
                 continue
 
-            convertion_tek(quality_tek)
+            convertion_tek(quantity_tek)
             break
 
         except ValueError:
