@@ -4,8 +4,13 @@ convertion = {
         'Tek Wall': 120,
         'Tek Pillar': 200,
         'Tek Large Walls': 30,
+        'Tek Roof/Ramp/Stairs': 100,
+        'Tek Sloped Walls': 350,
         'Tek Foundation': 80,
+        'Tek Triangle Fundation': 200,
+        'Tek Vaccum Compartments': 20,
         'Tek Generator': 3,
+        'Tek Replicator': 1,
         'Tek Cloning Chamber': 1,
         'Tek Dedicated Storage': 30,
         'Tek Transmiter': 3,
@@ -15,6 +20,7 @@ convertion = {
         'Hard Poly': 10000,
         'Black Perls': 1000,
         'Metal Lingots': 20000,
+        'Crystal': 40000
     }
 
 #Funcion para calcular niveles de embriones en el juego Reapers
