@@ -3,6 +3,7 @@ from PyQt6.QtWidgets import (QApplication, QMainWindow, QWidget, QLabel, QPushBu
 from PyQt6.QtGui import QPixmap
 from PyQt6.QtCore import Qt
 
+#Fuinción de la lista de la equivalencia de 100 tek.
 def convertion_tek(quantity_tek):
     convertion = {
         'Tek Celling': 100,
@@ -29,11 +30,13 @@ def convertion_tek(quantity_tek):
     }
     return {item: round((quantity_tek / 100) * value) for item, value in convertion.items()}
 
+#Calculo de niveles de embriones en el juego Reapers
 def calculate_level(r, p):
     e = r * (p + 100) / 250
     final_level = int(e + 75)
     return final_level
 
+#Clase de la ventana principal
 class MainWindow(QMainWindow):
     def __init__(self):
         super().__init__()
@@ -49,6 +52,7 @@ class MainWindow(QMainWindow):
 
         self.stack.setCurrentIndex(0)
 
+#Ventana aplicada a al calculo de niveles de embriones.
     def menu_start(self):
         widget = QWidget()
         layout = QVBoxLayout()
@@ -67,6 +71,7 @@ class MainWindow(QMainWindow):
         widget.setLayout(layout)
         self.stack.addWidget(widget)
 
+#Calculo de nivel.
     def menu_calculate(self):
         widget = QWidget()
         layout = QVBoxLayout()
@@ -93,6 +98,7 @@ class MainWindow(QMainWindow):
         widget.setLayout(layout)
         self.stack.addWidget(widget)
 
+#Vista resultado del calculo de niveles de embriones.
     def view_level(self):
         try:
             r = int(self.input_r.text())
@@ -102,6 +108,7 @@ class MainWindow(QMainWindow):
         except ValueError:
             self.label_final_level.setText('Error de parametros: Ingrese solo número enteros')
 
+#Ventana aplicada a la conversion tek.
     def menu_convertion(self):
         widget = QWidget()
         layout = QVBoxLayout()
@@ -124,6 +131,7 @@ class MainWindow(QMainWindow):
         widget.setLayout(layout)
         self.stack.addWidget(widget)
     
+#Resultado de la conversion tek de la lista.
     def view_convertion(self):
         try:
             quantity_tek = int(self.input_tek.text())
