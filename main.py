@@ -1,7 +1,9 @@
 from PyQt6.QtWidgets import QApplication, QWidget, QVBoxLayout, QPushButton, QLabel, QLineEdit, QMessageBox, QStackedWidget,  QHBoxLayout
 from PyQt6.QtGui import QPixmap
+from PyQt6.QtCore import Qt
 import sys
 import calculate_ark
+
 
 def set_background(widget, image_path):
         """Establece la imagen de fondo para la ventana principal."""
@@ -11,6 +13,7 @@ def set_background(widget, image_path):
         label_background.setScaledContents(True)
         label_background.resize(widget.size())
         label_background.lower()
+
 
 class CalculateArkGUI(QWidget):
     def __init__(self):
@@ -36,6 +39,7 @@ class CalculateArkGUI(QWidget):
         # Mostramos la página principal al inicio
         self.stack.setCurrentWidget(self.pag_main)
 
+
     @staticmethod
     def load_styles(app):
         try:
@@ -43,16 +47,19 @@ class CalculateArkGUI(QWidget):
                 app.setStyleSheet(file.read())
         except FileNotFoundError:
             print("El archivo de estilos no se encontró. Usando estilos predeterminados.")
+
     
     def create_main_page(self):
         """Creamos la página principal con los botones para seleccionar el resto"""
         pagine = QWidget()
+        pagine.setObjectName("page_main")
+
         layout = QVBoxLayout()
 
-        set_background(pagine, "assets/backgroud_abe.jpg")
-
-        label = QLabel("Seleccione una opción:")
-        layout.addWidget(label)
+        label_tittle = QLabel("Seleccione una opción:")
+        label_tittle.setObjectName("tittle")
+        label_tittle.setAlignment(Qt.AlignmentFlag.AlignCenter)
+        layout.addWidget(label_tittle)
 
         btn_reaper = QPushButton("Calcular nivel de Reaper")
         btn_reaper.clicked.connect(lambda: self.stack.setCurrentWidget(self.pag_reaper))
@@ -65,22 +72,31 @@ class CalculateArkGUI(QWidget):
         pagine.setLayout(layout)
         return pagine
 
+
     def create_reaper_page(self):
         """Creamos la página para calcular el nivel de la Reaper que nacera"""
         pagine = QWidget()
+        pagine.setObjectName("page_reaper")
+
         layout = QVBoxLayout()
 
-        set_background(pagine, "assets/Reaper.jpg")
+        label_tittle2 = QLabel("Calcular nivel de Reaper")
+        label_tittle2.setObjectName("tittle")
+        label_tittle2.setAlignment(Qt.AlignmentFlag.AlignCenter)
+        layout.addWidget(label_tittle2)
 
-        label = QLabel("Calcular nivel de Reaper")
-        layout.addWidget(label)
+        label_reaper = QLabel("Nivel de la Reaper")
+        label_reaper.setObjectName("label_input")
+        layout.addWidget(label_reaper)
 
         self.input_r = QLineEdit()
-        self.input_r.setPlaceholderText("Nivel de la Reaper")
         layout.addWidget(self.input_r)
 
+        label_carachter = QLabel("Nivel de tu personaje")
+        label_carachter.setObjectName("label_input")
+        layout.addWidget(label_carachter)
+
         self.input_p = QLineEdit()
-        self.input_p.setPlaceholderText("Nivel de tu personaje")
         layout.addWidget(self.input_p)
 
         btn_calculate = QPushButton("Calcular")
@@ -98,6 +114,7 @@ class CalculateArkGUI(QWidget):
         pagine.setLayout(layout)
         return pagine
     
+
     def calculate_reaper_level(self):
         """Calculamos el nivel de la Reaper"""
         try:
@@ -108,14 +125,16 @@ class CalculateArkGUI(QWidget):
         except ValueError:
             QMessageBox.warning(self, "Error", "Ingrese valores válidos.")
     
+
     def create_tek_page(self):
         """Creamos la página para convertir tek"""
         pagine = QWidget()
+        pagine.setObjectName("page_convertion")
+
         layout = QVBoxLayout()
 
-        set_background(pagine, "assets/Tek_Tier_Concept_Art.jpg")
-
         label = QLabel("Conversión de Tek")
+        label.setObjectName("tittle")
         layout.addWidget(label)
 
         self.input_tek = QLineEdit()
@@ -137,6 +156,7 @@ class CalculateArkGUI(QWidget):
         pagine.setLayout(layout)
         return pagine
     
+
     def convert_tek(self):
         """Convertimos la cantidad de tek"""
         try:
@@ -146,6 +166,7 @@ class CalculateArkGUI(QWidget):
             self.result_label_tek.setText(f"Conversion de Tek:\n{result_text}")
         except ValueError:
             QMessageBox.warning(self, "Error", "Ingrese una cantidad válida.")
+
 
 if __name__ == '__main__':
     app = QApplication(sys.argv)

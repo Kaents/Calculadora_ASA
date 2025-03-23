@@ -1,7 +1,53 @@
 QWidget {
     background-size: cover;
-    color: black;
     font-size: 14px;
+}
+
+#page_main {
+    background-color: #1e1e1e;
+}
+
+#page_main QLabel.tittle{
+    color: #4da6ff;
+    font-size: 20px;
+    font-weight: bold;
+    text-align: center;
+}
+
+#page_reaper {
+    background-color:#2e3b55;
+}
+
+#page_reaper QLabel.tittle {
+    color: #4da6ff;
+    font-size: 20px;
+    font-weight: bold;
+    text-align: center;
+}
+
+#page_reaper QLabel.label_input {
+    color: #4da6ff;
+}
+
+#page_convertion {
+    background-color: #553b2e;
+}
+
+#page_convertion QLabel.tittle {
+    color: #ff9f4d;
+    font-size: 20px;
+    font-weight: bold;
+    text-align: center;
+}
+
+#page_convertion QLabel.label_input {
+    color: #ff9f4d
+}
+
+QLineEdit {
+    background-color: white;
+    border: 1px solid #ccc;
+    padding: 5px;
 }
 
 QPushButton {
